@@ -32,11 +32,11 @@ func corruptionChecksum(input string) int{
 		differences = append(differences, (max-min))
 	}
 
-    if err := scanner.Err(); err != nil {
-        fmt.Print(err)
-    }
+	if err := scanner.Err(); err != nil {
+		fmt.Print(err)
+	}
 
-    return sum(differences)
+	return sum(differences)
 }
 
 func corruptionChecksum2(input string) int{
@@ -52,21 +52,21 @@ func corruptionChecksum2(input string) int{
 		divisions = append(divisions, (div1/div2))
 	}
 
-    if err := scanner.Err(); err != nil {
-        fmt.Print(err)
-    }
+	if err := scanner.Err(); err != nil {
+		fmt.Print(err)
+	}
 
-    return sum(divisions)
+	return sum(divisions)
 }
 
 
 func readFile(path string) string{
 	// Read file
-    fileContent, err := ioutil.ReadFile("input.txt")
-    if err != nil {
-        fmt.Print(err)
-    }
-    return string(fileContent)
+	fileContent, err := ioutil.ReadFile("input.txt")
+	if err != nil {
+		fmt.Print(err)
+	}
+	return string(fileContent)
 }
 
 func findDivisible(array []int) (int, int) {
@@ -90,33 +90,33 @@ func findDivisible(array []int) (int, int) {
 }
 
 func minAndMax(array []int) (int, int) {
-    max := array[0]
-    min := array[0]
-    for _, value := range array {
-        if max < value {
-            max = value
-        }
-        if min > value {
-            min = value
-        }
-    }
-    return min, max
+	max := array[0]
+	min := array[0]
+	for _, value := range array {
+		if max < value {
+			max = value
+		}
+		if min > value {
+			min = value
+		}
+	}
+	return min, max
 }
 
 func sum(arr []int) int {
-    // Calculate sum of int array
-    sum := 0
-    for i := range arr {
-        sum += arr[i]
-    }
-    return sum
+	// Calculate sum of int array
+	sum := 0
+	for i := range arr {
+		sum += arr[i]
+	}
+	return sum
 }
 
 func stringArrToIntArray(arr []string) []int{
 	numberArray := make([] int, 0, len(arr))
 	for _, a := range arr {
-        i, _ := strconv.Atoi(string(a))
-        numberArray = append(numberArray, i)
-    }
-    return numberArray
+		i, _ := strconv.Atoi(string(a))
+		numberArray = append(numberArray, i)
+	}
+	return numberArray
 }
