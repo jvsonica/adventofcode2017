@@ -1,2 +1,5 @@
 # Ignore .out binaries
 *.out
+
+# IDE files
+.idea/
