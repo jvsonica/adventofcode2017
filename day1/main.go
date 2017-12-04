@@ -16,25 +16,25 @@ func main() {
     input := string(fileContent)
 
     // Puzzle 1
-    fmt.Println(solveCaptcha("1122"), "should be 3")
-    fmt.Println(solveCaptcha("1111"), "should be 4")
-    fmt.Println(solveCaptcha("1234"), "should be 0")
-    fmt.Println(solveCaptcha("91212129"), "should be 9")
-    fmt.Println("problem result is ", solveCaptcha(input))
+    fmt.Println(SolveCaptcha("1122"), "should be 3")
+    fmt.Println(SolveCaptcha("1111"), "should be 4")
+    fmt.Println(SolveCaptcha("1234"), "should be 0")
+    fmt.Println(SolveCaptcha("91212129"), "should be 9")
+    fmt.Println("problem result is ", SolveCaptcha(input))
 
     // Puzzle 2
-    fmt.Println(solveCaptcha2("1212"), "should be 6")
-    fmt.Println(solveCaptcha2("1221"), "should be 0")
-    fmt.Println(solveCaptcha2("123425"), "should be 4")
-    fmt.Println(solveCaptcha2("123123"), "should be 12")
-    fmt.Println(solveCaptcha2("123131415"), "should be 4")
-    fmt.Println("problem result is ", solveCaptcha2(input))
+    fmt.Println(SolveCaptcha2("1212"), "should be 6")
+    fmt.Println(SolveCaptcha2("1221"), "should be 0")
+    fmt.Println(SolveCaptcha2("123425"), "should be 4")
+    fmt.Println(SolveCaptcha2("123123"), "should be 12")
+    fmt.Println(SolveCaptcha2("123131415"), "should be 4")
+    fmt.Println("problem result is ", SolveCaptcha2(input))
 }
 
-func solveCaptcha(input string) int{
+func SolveCaptcha(input string) int{
     arr := stringToIntArray(input)
     arr = append(arr, arr[0])
-    consecutive := []int{}
+    var consecutive []int
 
     for i:= 0; i < len(arr) - 1; i++ {
         if arr[i] == arr[i+1] {
@@ -45,9 +45,9 @@ func solveCaptcha(input string) int{
     return sum(consecutive)
 }
 
-func solveCaptcha2(input string) int{
+func SolveCaptcha2(input string) int{
     arr := stringToIntArray(input)
-    halfwayConsecutive := []int{}
+    var halfwayConsecutive []int
     stepAhead := len(arr) / 2
 
     for i:=0; i < len(arr) / 2; i++ {

@@ -10,18 +10,18 @@ import (
 
 func main() {
 	// Read file into string
-	fileContent := readFile("input.txt")
+	fileContent := ReadFile("input.txt")
 
-	fmt.Println(corruptionChecksum("5	1	9	5\n7	5	3\n2	4	6	8\n"), "should be 18")
-	fmt.Println("the problem result is", corruptionChecksum(fileContent))
+	fmt.Println(CorruptionChecksum("5	1	9	5\n7	5	3\n2	4	6	8\n"), "should be 18")
+	fmt.Println("the problem result is", CorruptionChecksum(fileContent))
 
-	fmt.Println(corruptionChecksum2("5	9	2	8\n9	4	7	3\n3	8	6	5	8\n"), "should be 9")
-	fmt.Println("the problem result is", corruptionChecksum2(fileContent))	
+	fmt.Println(CorruptionChecksum2("5	9	2	8\n9	4	7	3\n3	8	6	5	8\n"), "should be 9")
+	fmt.Println("the problem result is", CorruptionChecksum2(fileContent))
 }
 
-func corruptionChecksum(input string) int{
+func CorruptionChecksum(input string) int{
 	// Difference of each line
-	differences := []int{}
+	var differences []int
 
 	// Run every line
 	scanner := bufio.NewScanner(strings.NewReader(input))
@@ -29,7 +29,7 @@ func corruptionChecksum(input string) int{
 		currentLine := scanner.Text()
 		temp := strings.Split(currentLine,"\t")
 		min, max := minAndMax(stringArrToIntArray(temp))
-		differences = append(differences, (max-min))
+		differences = append(differences, max-min)
 	}
 
 	if err := scanner.Err(); err != nil {
@@ -39,9 +39,9 @@ func corruptionChecksum(input string) int{
 	return sum(differences)
 }
 
-func corruptionChecksum2(input string) int{
+func CorruptionChecksum2(input string) int{
 	// Quotient of each line
-	divisions := []int{}
+	var divisions []int
 
 	// Run every line
 	scanner := bufio.NewScanner(strings.NewReader(input))
@@ -49,7 +49,7 @@ func corruptionChecksum2(input string) int{
 		currentLine := scanner.Text()
 		temp := strings.Split(currentLine,"\t")
 		div1, div2 := findDivisible(stringArrToIntArray(temp))
-		divisions = append(divisions, (div1/div2))
+		divisions = append(divisions, div1/div2)
 	}
 
 	if err := scanner.Err(); err != nil {
@@ -60,7 +60,7 @@ func corruptionChecksum2(input string) int{
 }
 
 
-func readFile(path string) string{
+func ReadFile(path string) string{
 	// Read file
 	fileContent, err := ioutil.ReadFile("input.txt")
 	if err != nil {
@@ -73,9 +73,9 @@ func findDivisible(array []int) (int, int) {
 	divisible1 := array[0]
 	divisible2 := array[0]
 
-	for _, value := range(array) {
+	for _, value := range array {
 		currentDivisible1 := value
-		for _, currentDivisible2 := range(array) {
+		for _, currentDivisible2 := range array {
 			if currentDivisible2 == currentDivisible1 {
 				continue
 			}

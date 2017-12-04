@@ -8,14 +8,14 @@ import (
 func main() {
 	fmt.Println("day3")
 
-	fmt.Println(problem1(12), "should be 3")
-	fmt.Println(problem1(23), "should be 2")
-	fmt.Println(problem1(1024), "should be 31")
-	fmt.Println("the problem result is", problem1(312051))
+	fmt.Println(Problem1(12), "should be 3")
+	fmt.Println(Problem1(23), "should be 2")
+	fmt.Println(Problem1(1024), "should be 31")
+	fmt.Println("the problem result is", Problem1(312051))
 
 }
 
-func problem1(value int) int{
+func Problem1(value int) int{
 	// Find the side size of the spiral
 	dim := 1
 
