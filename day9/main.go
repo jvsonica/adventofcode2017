@@ -24,6 +24,14 @@ func main() {
 	fmt.Println(Problem1("{{<a>},{<a>},{<a>},{<a>}}"), "should be 9")
 	fmt.Println(Problem1("{{<!>},{<!>},{<!>},{<a>}}"), "should be 3")
 	fmt.Println("the problem result is", Problem1(input))
+
+	fmt.Println("Part 2")
+	fmt.Println(Problem2("<>"), "should be 0")
+	fmt.Println(Problem2("<random characters>"), "should be 17")
+	fmt.Println(Problem2("<<<<>"), "should be 3")
+	fmt.Println(Problem2("<!!!>>"), "should be 0")
+	fmt.Println(Problem2("<{oai!a,<{i<a>"), "should be 10")
+	fmt.Println("the problem result is", Problem2(input))
 }
 
 func Problem1(input string) int{
@@ -53,4 +61,28 @@ func Problem1(input string) int{
 		}
 	}
 	return score
+}
+
+func Problem2(input string) int {
+	inputLength := len(input)
+	deletedCount := 0
+
+	for i := 0; i < inputLength; i++ {
+		if input[i] == '<' {
+			currentCount := 0
+			for j := i + 1; j < inputLength; j++ {
+				if input[j] == '!' {
+					j = j + 1
+				} else if input[j] == '>' {
+					deletedCount = deletedCount + currentCount
+					i = j
+					break
+				} else {
+					currentCount = currentCount + 1
+				}
+			}
+		}
+	}
+
+	return deletedCount
 }
